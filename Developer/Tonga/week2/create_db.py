@@ -254,7 +254,7 @@ def get_product(save_db=False):
 
                         if save_db:
                             product.save_into_db()
-                            print(f'SAVE {title} INTO DTB')
+                            print(f'SAVE {title} INTO DB')
                         result.append(product)
                 else:
                     break
