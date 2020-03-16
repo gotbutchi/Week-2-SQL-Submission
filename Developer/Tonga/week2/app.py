@@ -1,31 +1,22 @@
 from bs4 import BeautifulSoup
-import os
-import sqlite3
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask import Flask, render_template, url_for, request, redirect
+
 import requests
+import sqlite3
 import re
 
 app = Flask(__name__)
-app.config['TESTING'] = True
+app.config.from_pyfile('config.cfg')
 
-def get_url(URL):
-    """Get HTML from URL
-    """
-    soup = BeautifulSoup(r.text, 'html.parser')
-    return soup
+BASE_URL = 'https://tiki.vn/'
 
 def connect_db():
-    """Connects to the specific database."""
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
+	return sqlite3.connect(app.config['DATABASE'])
 
-def get_db():
-    """Opens a new database connection if there is none yet for the
-    current application context.
-    """
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
-    return g.sqlite_db
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-db=sqlite3.connect('test.db')
+if __name__ == '__main__':
+  app.run(host='127.0.0.1', port=8000, debug=True)
+ 
