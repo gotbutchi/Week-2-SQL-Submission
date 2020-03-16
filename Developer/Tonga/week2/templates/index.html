@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Fluid jumbotron</h1>
+          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        </div>
+    </div>
+    <!-- JUMBOTRON -->
+
+    <!-- CARDS for MOST VOTED -->
+    <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+    </div>
+    <!-- CARDS for MOST VOTED -->
+
+    <!-- CARDS for PRODUCT DISPLAY -->
+    <div class="container">
+      <div class="card-columns">
+
+        {% for article in data %}
+        <div class="card">
+          <div class="card-body">
+            <a href="{{ article.link }}">
+              <img class="img-fluid rounded-circle w-100 mb-3" src="{{ article.image }}" alt="Card image cap">
+              </a>
+            <h6 class="card-topic">{{ article.topic }}</h6>
+            <a href="{{ article.link }}" style="text-decoration:none;">
+              <h5 class="card-title">{{ article.title }}</h5>
+            </a>
+            <h6 class="card-author">{{ article.author }}</h6>
+            <p class="card-text">{{ article.description }}</p>
+          
+            <!-- Card Action -->
+		          <a href="donate" class="btn btn-light" id="btn">Donate</a>
+          </div> 
+        </div>
+        {% endfor %}
+        
+       </div>
+    </div>
+    <!-- CARDS for PRODUCT DISPLAY -->
+    
+{% endblock %}
