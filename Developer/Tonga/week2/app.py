@@ -25,11 +25,12 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
+
 @app.route('/')
 def index():
+    conn = get_db()
+    cur = conn.cursor()
     return render_template('index.html')
-    cur = get_db().cursor()
-    ...
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=8000, debug=True)
